@@ -1,0 +1,2 @@
+def awake():
+    print('binary')

@@ -44,6 +44,8 @@ def mode_selector():
                     print('ERROR with '+sys.argv[1])
         elif sys.argv[1]=='-search':
             print('Search')
+            from search import binary
+            binary.awake()
         elif sys.argv[1]=='-joke':
             import os
             try:
