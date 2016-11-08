@@ -12,20 +12,17 @@ def mode_selector():
             if len(sys.argv)>=3:
                 if sys.argv[2]=='bubble':
                     from sort import bubble
-                    #bubble.awake()
                     if len(sys.argv)==3:
-                        print(len(sys.argv)==3)
-                        print('random')
                         print(bubble.random_sort())
-                    elif len(sys.argv[3])<=2 or sys.argv[3]=='-r':
-                        print(len(sys.argv[3])<=2)
-                        print('random')
-                        print(bubble.random_sort())
+                    elif sys.argv[3]=='-r':
+                        from auxiliary import randomizer
+                        collection = list(randomizer.create_collection(10,0,25))
+                        print("initial collection:\t"+ str(collection))
+                        print("result collection:\t" + str(bubble.sort(collection)))
                     else:
-                        st = sys.argv[3:]
-                        print('MAIN')
-                        print(st)
-                        print(bubble.sort(sys.argv[3:]))
+                        st = [int(item) for item in sys.argv[3:]]
+                        print("initial collection:\t"+ str(st))
+                        print("result collection:\t"+str(bubble.sort(sys.argv[3:])))
                 elif sys.argv[2]=='insertion':
                     from sort import insertion
                     insertion.awake()
