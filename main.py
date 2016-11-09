@@ -19,6 +19,12 @@ def mode_selector():
                         collection = list(randomizer.create_collection(10,0,25))
                         print("initial collection:\t"+ str(collection))
                         print("result collection:\t" + str(bubble.sort(collection)))
+                    elif len(sys.argv)==4 and len(sys.argv[3])>3:
+                        from auxiliary import text_formater
+                        st = str(sys.argv[3])
+                        collection = [int(item) for item in st.split(text_formater.find_separator(st))]
+                        print("initial collection:\t"+ str(collection))
+                        print("result collection:\t" + str(bubble.sort(collection)))
                     else:
                         st = [int(item) for item in sys.argv[3:]]
                         print("initial collection:\t"+ str(st))
