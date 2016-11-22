@@ -7,7 +7,7 @@ class Stack:
 
     def push(self, item):
         import node
-        itm = node.Node(item)
+        itm = node.Node(item,None,None)
         self.stck.append(itm)
         self.top += 1
         return None
