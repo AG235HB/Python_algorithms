@@ -1,3 +1,16 @@
+def show_help():
+    print "Usage:"
+    print "\tmain.py [-h] [-st <type of sort> <sequence>] [-sh]"
+    print "Parameters"
+    print "\t-h\t\tShow help."
+    print "\t-st\t\tSorting of sequence of numbers. It is necessary\n\t\t\tto specify sorting type."
+    print "\t\t\tSequence numbers(figures) can be partitioned by\n\t\t\tspaces or ',';\n\t\t\tif the sequence is not specified, 10 random numbers\n\t\t\twill be generated."
+    print "\t\t-b\tBubble sort."
+    print "\t\t-i\tInsertion sort."
+    print "\t\t-m\tMerge sort."
+    print "\t\t-q\tQuick sort."
+    print "\t\t-s\tSelection sort."
+
 def mode_selector():
     if len(sys.argv) >= 2:
         #SORT: bubble, selection, insertion, merge, quick
@@ -8,16 +21,11 @@ def mode_selector():
         #    random = True
         if sys.argv[1]=='-h':
             print("Help:")
-        elif sys.argv[1]=='-sort':
+        elif sys.argv[1]=='-st':
             if len(sys.argv)>=3:
-                if sys.argv[2]=='bubble':
+                if sys.argv[2]=='-b':
                     from sort import bubble
                     if len(sys.argv)==3:
-                        from auxiliary import randomizer
-                        collection = list(randomizer.create_collection(10,0,25))
-                        print("initial collection:\t"+ str(collection))
-                        print("result collection:\t" + str(bubble.sort(collection)))
-                    elif sys.argv[3]=='-r':
                         from auxiliary import randomizer
                         collection = list(randomizer.create_collection(10,0,25))
                         print("initial collection:\t"+ str(collection))
@@ -32,14 +40,9 @@ def mode_selector():
                         st = [int(item) for item in sys.argv[3:]]
                         print("initial collection:\t"+ str(st))
                         print("result collection:\t"+str(bubble.sort(sys.argv[3:])))
-                elif sys.argv[2]=='insertion':
+                elif sys.argv[2]=='-i':
                     from sort import insertion
                     if len(sys.argv)==3:
-                        from auxiliary import randomizer
-                        collection = list(randomizer.create_collection(10,0,25))
-                        print("initial collection:\t"+ str(collection))
-                        print("result collection:\t" + str(insertion.sort(collection)))
-                    elif sys.argv[3]=='-r':
                         from auxiliary import randomizer
                         collection = list(randomizer.create_collection(10,0,25))
                         print("initial collection:\t"+ str(collection))
@@ -54,14 +57,9 @@ def mode_selector():
                         st = [int(item) for item in sys.argv[3:]]
                         print("initial collection:\t"+ str(st))
                         print("result collection:\t"+str(insertion.sort(sys.argv[3:])))
-                elif sys.argv[2]=='merge':
+                elif sys.argv[2]=='-m':
                     from sort import merge
                     if len(sys.argv)==3:
-                        from auxiliary import randomizer
-                        collection = list(randomizer.create_collection(10,0,25))
-                        print("initial collection:\t"+ str(collection))
-                        print("result collection:\t" + str(merge.sort(collection)))
-                    elif sys.argv[3]=='-r':
                         from auxiliary import randomizer
                         collection = list(randomizer.create_collection(10,0,25))
                         print("initial collection:\t"+ str(collection))
@@ -76,14 +74,9 @@ def mode_selector():
                         st = [int(item) for item in sys.argv[3:]]
                         print("initial collection:\t"+ str(st))
                         print("result collection:\t"+str(merge.sort(sys.argv[3:])))
-                elif sys.argv[2]=='quick':
+                elif sys.argv[2]=='-q':
                     from sort import quick
                     if len(sys.argv)==3:
-                        from auxiliary import randomizer
-                        collection = list(randomizer.create_collection(10,0,25))
-                        print("initial collection:\t"+ str(collection))
-                        print("result collection:\t" + str(quick.sort(collection)))
-                    elif sys.argv[3]=='-r':
                         from auxiliary import randomizer
                         collection = list(randomizer.create_collection(10,0,25))
                         print("initial collection:\t"+ str(collection))
@@ -98,14 +91,9 @@ def mode_selector():
                         st = [int(item) for item in sys.argv[3:]]
                         print("initial collection:\t"+ str(st))
                         print("result collection:\t"+str(quick.sort(sys.argv[3:])))
-                elif sys.argv[2]=='selection':
+                elif sys.argv[2]=='-s':
                     from sort import selection
                     if len(sys.argv)==3:
-                        from auxiliary import randomizer
-                        collection = list(randomizer.create_collection(10,0,25))
-                        print("initial collection:\t"+ str(collection))
-                        print("result collection:\t" + str(selection.sort(collection)))
-                    elif sys.argv[3]=='-r':
                         from auxiliary import randomizer
                         collection = list(randomizer.create_collection(10,0,25))
                         print("initial collection:\t"+ str(collection))
@@ -124,7 +112,7 @@ def mode_selector():
                     print('ERROR in sort')
             else:
                     print('ERROR with '+sys.argv[1])
-        elif sys.argv[1]=='-search':
+        elif sys.argv[1]=='-sh':
             print('Search')
             from search import binary
             binary.awake()
@@ -136,10 +124,10 @@ def mode_selector():
                 os.system('clear')
             print("The classic mistake inventors absolutely reliable systems - this underestimation of the ingenuity of clinical idiots.\n\nDouglas Adams")
         else:
-            print('ERROR')
+            show_help()
         
     else:
-        print("Usage:...")
+        show_help()
 
     #print(random)
 
@@ -161,9 +149,3 @@ if __name__ == '__main__':
         input_func = input
 
     mode_selector()
-
-    #print("\nPOW!\n")
-
-    #user_input = input_func('enter numbers\n')
-    #print(find_separator(user_input))
-    #unsorted = [int(item) for item in user_input.split(find_separator(user_input))]
