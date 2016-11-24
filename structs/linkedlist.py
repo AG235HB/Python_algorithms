@@ -75,7 +75,7 @@ class LinkedList:
 
     def cycle(self):
         currentNode = self.ll
-        if self.was_cycled:
+        if not self.was_cycled:
             last = self.ll
             while currentNode.next != None:
                 currentNode = currentNode.next
@@ -83,34 +83,35 @@ class LinkedList:
             while currentNode.prev != None:
                 currentNode = currentNode.prev
             last = currentNode
-            print("FIRST:" + str(self.first_node.data) + " LAST:" + str(self.last_node.data))
+            print "FIRST:" + str(self.first_node.data) + " LAST:" + str(self.last_node.data)
             for i in range(0,self.nodes-1,1):
                 currentNode = currentNode.next
-                    #print currentNode.data
             currentNode.next = last
             last.prev = currentNode
             self.first_node = currentNode
             self.last_node = last
+            self.was_cycled = True
         else:
             self.ll.prev = self.first_node
             self.ll.prev.next = self.ll
+            
 
     def show_current(self):
         try:
-            print("P:"+self.print_func(self.ll.prev))
+            print "P:"+self.print_func(self.ll.prev)
         except AttributeError:
-            print("error")
+            print "error"
         try:
-            print("C:"+self.print_func(self.ll))
+            print "C:"+self.print_func(self.ll)
         except AttributeError:
-            print("error")
+            print "error"
         try:
-            print("N:"+self.print_func(self.ll.next))
+            print "N:"+self.print_func(self.ll.next)
         except AttributeError:
-            print("error")
+            print "error"
 
     def del_current(self):
-        import node
+        #import node
         if self.ll == None:
             return None
         else:

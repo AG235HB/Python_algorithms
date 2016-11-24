@@ -109,9 +109,9 @@ def mode_selector():
                         print("initial collection:\t"+ str(st))
                         print("result collection:\t"+str(selection.sort(sys.argv[3:])))
                 else:
-                    print('ERROR in sort')
+                    show_help()
             else:
-                    print('ERROR with '+sys.argv[1])
+                    show_help()
         elif sys.argv[1]=='-sh':
             print('Search')
             from search import binary
