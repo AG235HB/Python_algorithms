@@ -1,10 +1,13 @@
 def show_help():
     print "Usage:"
     print "\tmain.py [-h] [-st <type of sort> <sequence>] [-sh]"
-    print "Parameters"
+    print "Parameters:"
     print "\t-h\t\tShow help."
-    print "\t-st\t\tSorting of sequence of numbers. It is necessary\n\t\t\tto specify sorting type."
-    print "\t\t\tSequence numbers(figures) can be partitioned by\n\t\t\tspaces or ',';\n\t\t\tif the sequence is not specified, 10 random numbers\n\t\t\twill be generated."
+    print "\t-st\t\tSorting of sequence of numbers. It is necessary"
+    print "\t\t\tto specify sorting type."
+    print "\t\t\tSequence numbers(figures) can be partitioned by\n\t\t\tspaces or ',';"
+    print "\t\t\tif the sequence is not specified, 10 random numbers"
+    print "\t\t\twill be generated."
     print "\t\t-b\tBubble sort."
     print "\t\t-i\tInsertion sort."
     print "\t\t-m\tMerge sort."
@@ -13,12 +16,6 @@ def show_help():
 
 def mode_selector():
     if len(sys.argv) >= 2:
-        #SORT: bubble, selection, insertion, merge, quick
-        #SEARCH: binary, linear
-        #STACK
-        #QUEUE
-        #if len(sys.argv) == 2:
-        #    random = True
         if sys.argv[1]=='-h':
             print("Help:")
         elif sys.argv[1]=='-st':
@@ -122,19 +119,15 @@ def mode_selector():
                 os.system('cls')
             except:
                 os.system('clear')
-            print("The classic mistake inventors absolutely reliable systems - this underestimation of the ingenuity of clinical idiots.\n\nDouglas Adams")
+            print("The classic mistake inventors absolutely reliable systems - this underestimation of the ingenuity of clinical idiots.\n\nDouglas Adams.")
         else:
             show_help()
         
     else:
         show_help()
 
-    #print(random)
-
 def find_separator(collection):
-    #print(collection)
     for index, item in enumerate(collection):
-        #print(item)
         if item == ',':
             return ','
         if item == ' ':

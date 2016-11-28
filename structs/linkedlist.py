@@ -3,7 +3,7 @@ class LinkedList:
     
     def __init__(self):
         self.ll = None
-        self.nodes=0
+        self.nodes = 0
         self.first_node = None
         self.last_node = None
         self.was_cycled = False
