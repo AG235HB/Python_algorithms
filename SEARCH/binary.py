@@ -4,38 +4,47 @@ class BinaryTree:
         self.bt = None
 
     def add_to_parent_recurrent(self, parent, value):
-        #print "add_to_parent_recurrent"
-        #print parent.data
-        #st = "PARENT:" + str(parent.data) + " VALUE:" + str(value)
-        #st += "PARENT LEFT:" + str(parent.left) + " PARENT RIGHT:" + str(parent.right)
-
-        #print "PARENT:" + str(parent.data) + " VALUE:" + str(value)
-        #print "PARENT LEFT:" + str(parent.left) + " PARENT RIGHT:" + str(parent.right)
+        print "PARENT:" + str(parent.data) + " VALUE:" + str(value)
         from structs import btnode
         if value < parent.data:
-            #print "try add to left"
             if parent.left is None:
                 parent.left = btnode.BinaryTreeNode(value, None, None, parent)
-                #print "to left " + str(parent.left.data)
+                print "to left " + str(parent.left.data)
             else:
-                #print "left again"
                 self.add_to_parent_recurrent(parent.left, value)
         elif value >= parent.data:
-            #print "try add to right"
             if parent.right is None:
                 parent.right = btnode.BinaryTreeNode(value, None, None, parent)
-                #print "to right " + str(parent.right.data)
+                print "to right " + str(parent.right.data)
             else:
-                #print "right again"
                 self.add_to_parent_recurrent(parent.right, value)
-        #else:
-        #    print "CARAMBA"
-        #return st
+        
+    def find_node(self, parent, value, result):
+        result = result
+        if value < parent.data:
+            if parent.left is not None:
+                result = self.find_node(parent.left, value, result)
+        elif value >= parent.data:
+            if parent.right is not None:
+                if parent.data == value:
+                    print "FOUND"
+                    result += " " + str(parent.data)
+                result = self.find_node(parent.right, value, result)
+            else:
+                if parent.data == value:
+                    print "FOUND"
+                    result += " " + str(parent.data)
+                else:
+                    result += "not found"
+        return result
 
+    def search(self, value):
+        res = self.find_node(self.bt, value, "RESULT:")
+        return res
 
     def add(self, value):
         from structs import btnode
-        if self.nodes == 0:
+        if self.bt is None:
             self.bt = btnode.BinaryTreeNode(value, None, None, None)
             self.nodes += 1
             print self.bt.data
