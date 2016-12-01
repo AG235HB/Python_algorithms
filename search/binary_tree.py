@@ -1,6 +1,5 @@
 class BinaryTree:
     def __init__(self):
-        self.nodes = 0
         self.bt = None
 
     def add_to_parent_recurrent(self, parent, value):
@@ -27,15 +26,14 @@ class BinaryTree:
         elif value >= parent.data:
             if parent.right is not None:
                 if parent.data == value:
-                    print "FOUND"
-                    result += " " + str(parent.data)
-                result = self.find_node(parent.right, value, result)
-            else:
-                if parent.data == value:
-                    print "FOUND"
                     result += " " + str(parent.data)
                 else:
-                    result += "not found"
+                    result = self.find_node(parent.right, value, result)
+            else:
+                if parent.data == value:
+                    result += " " + str(parent.data)
+        if len(result) == 7:
+            result += "not found"
         return result
 
     def search(self, value):
@@ -46,8 +44,6 @@ class BinaryTree:
         from structs import btnode
         if self.bt is None:
             self.bt = btnode.BinaryTreeNode(value, None, None, None)
-            self.nodes += 1
             print self.bt.data
         else:
             self.add_to_parent_recurrent(self.bt, value)
-            self.nodes += 1

@@ -16,110 +16,134 @@ def show_help():
 
 def mode_selector():
     if len(sys.argv) >= 2:
-        if sys.argv[1]=='-h':
+        if sys.argv[1] == '-h':
             print("Help:")
-        elif sys.argv[1]=='-st':
-            if len(sys.argv)>=3:
-                if sys.argv[2]=='-b':
+        elif sys.argv[1] == '-st':
+            if len(sys.argv) >= 3:
+                if sys.argv[2] == '-b':
                     from sort import bubble
-                    if len(sys.argv)==3:
+                    if len(sys.argv) == 3:
                         from auxiliary import randomizer
-                        collection = list(randomizer.create_collection(10,0,25))
-                        print("initial collection:\t"+ str(collection))
-                        print("result collection:\t" + str(bubble.sort(collection)))
-                    elif len(sys.argv)==4 and len(sys.argv[3])>3:
+                        collection = list(randomizer.create_collection(10, 0, 25))
+                        print "initial collection:\t" + str(collection)
+                        print "result collection:\t" + str(bubble.sort(collection))
+                    elif len(sys.argv) == 4 and len(sys.argv[3]) > 3:
                         from auxiliary import text_formater
                         st = str(sys.argv[3])
                         collection = [int(item) for item in st.split(text_formater.find_separator(st))]
-                        print("initial collection:\t"+ str(collection))
-                        print("result collection:\t" + str(bubble.sort(collection)))
+                        print "initial collection:\t"+ str(collection)
+                        print "result collection:\t" + str(bubble.sort(collection))
                     else:
                         st = [int(item) for item in sys.argv[3:]]
-                        print("initial collection:\t"+ str(st))
-                        print("result collection:\t"+str(bubble.sort(sys.argv[3:])))
-                elif sys.argv[2]=='-i':
+                        print "initial collection:\t"+ str(st)
+                        print "result collection:\t"+str(bubble.sort(sys.argv[3:]))
+                elif sys.argv[2] == '-i':
                     from sort import insertion
-                    if len(sys.argv)==3:
+                    if len(sys.argv) == 3:
                         from auxiliary import randomizer
-                        collection = list(randomizer.create_collection(10,0,25))
-                        print("initial collection:\t"+ str(collection))
-                        print("result collection:\t" + str(insertion.sort(collection)))
-                    elif len(sys.argv)==4 and len(sys.argv[3])>3:
+                        collection = list(randomizer.create_collection(10, 0, 25))
+                        print "initial collection:\t" + str(collection)
+                        print "result collection:\t" + str(insertion.sort(collection))
+                    elif len(sys.argv) == 4 and len(sys.argv[3]) > 3:
                         from auxiliary import text_formater
                         st = str(sys.argv[3])
                         collection = [int(item) for item in st.split(text_formater.find_separator(st))]
-                        print("initial collection:\t"+ str(collection))
-                        print("result collection:\t" + str(insertion.sort(collection)))
+                        print "initial collection:\t" + str(collection)
+                        print "result collection:\t" + str(insertion.sort(collection))
                     else:
                         st = [int(item) for item in sys.argv[3:]]
-                        print("initial collection:\t"+ str(st))
-                        print("result collection:\t"+str(insertion.sort(sys.argv[3:])))
-                elif sys.argv[2]=='-m':
+                        print "initial collection:\t" + str(st)
+                        print "result collection:\t" + str(insertion.sort(sys.argv[3:]))
+                elif sys.argv[2] == '-m':
                     from sort import merge
-                    if len(sys.argv)==3:
+                    if len(sys.argv) == 3:
                         from auxiliary import randomizer
-                        collection = list(randomizer.create_collection(10,0,25))
-                        print("initial collection:\t"+ str(collection))
-                        print("result collection:\t" + str(merge.sort(collection)))
-                    elif len(sys.argv)==4 and len(sys.argv[3])>3:
+                        collection = list(randomizer.create_collection(10, 0, 25))
+                        print "initial collection:\t"+ str(collection)
+                        print "result collection:\t" + str(merge.sort(collection))
+                    elif len(sys.argv) == 4 and len(sys.argv[3]) > 3:
                         from auxiliary import text_formater
                         st = str(sys.argv[3])
                         collection = [int(item) for item in st.split(text_formater.find_separator(st))]
-                        print("initial collection:\t"+ str(collection))
-                        print("result collection:\t" + str(merge.sort(collection)))
+                        print "initial collection:\t"+ str(collection)
+                        print "result collection:\t" + str(merge.sort(collection))
                     else:
                         st = [int(item) for item in sys.argv[3:]]
-                        print("initial collection:\t"+ str(st))
-                        print("result collection:\t"+str(merge.sort(sys.argv[3:])))
-                elif sys.argv[2]=='-q':
+                        print "initial collection:\t"+ str(st)
+                        print "result collection:\t"+str(merge.sort(sys.argv[3:]))
+                elif sys.argv[2] == '-q':
                     from sort import quick
-                    if len(sys.argv)==3:
+                    if len(sys.argv) == 3:
                         from auxiliary import randomizer
-                        collection = list(randomizer.create_collection(10,0,25))
-                        print("initial collection:\t"+ str(collection))
-                        print("result collection:\t" + str(quick.sort(collection)))
-                    elif len(sys.argv)==4 and len(sys.argv[3])>3:
+                        collection = list(randomizer.create_collection(10, 0, 25))
+                        print "initial collection:\t"+ str(collection)
+                        print "result collection:\t" + str(quick.sort(collection))
+                    elif len(sys.argv) == 4 and len(sys.argv[3]) > 3:
                         from auxiliary import text_formater
                         st = str(sys.argv[3])
                         collection = [int(item) for item in st.split(text_formater.find_separator(st))]
-                        print("initial collection:\t"+ str(collection))
-                        print("result collection:\t" + str(quick.sort(collection)))
+                        print "initial collection:\t"+ str(collection)
+                        print "result collection:\t" + str(quick.sort(collection))
                     else:
                         st = [int(item) for item in sys.argv[3:]]
-                        print("initial collection:\t"+ str(st))
-                        print("result collection:\t"+str(quick.sort(sys.argv[3:])))
-                elif sys.argv[2]=='-s':
+                        print "initial collection:\t"+ str(st)
+                        print "result collection:\t"+str(quick.sort(sys.argv[3:]))
+                elif sys.argv[2] == '-s':
                     from sort import selection
-                    if len(sys.argv)==3:
+                    if len(sys.argv) == 3:
                         from auxiliary import randomizer
-                        collection = list(randomizer.create_collection(10,0,25))
-                        print("initial collection:\t"+ str(collection))
-                        print("result collection:\t" + str(selection.sort(collection)))
-                    elif len(sys.argv)==4 and len(sys.argv[3])>3:
+                        collection = list(randomizer.create_collection(10, 0, 25))
+                        print "initial collection:\t"+ str(collection)
+                        print "result collection:\t" + str(selection.sort(collection))
+                    elif len(sys.argv) == 4 and len(sys.argv[3]) > 3:
                         from auxiliary import text_formater
                         st = str(sys.argv[3])
                         collection = [int(item) for item in st.split(text_formater.find_separator(st))]
-                        print("initial collection:\t"+ str(collection))
-                        print("result collection:\t" + str(selection.sort(collection)))
+                        print "initial collection:\t"+ str(collection)
+                        print "result collection:\t" + str(selection.sort(collection))
                     else:
                         st = [int(item) for item in sys.argv[3:]]
-                        print("initial collection:\t"+ str(st))
-                        print("result collection:\t"+str(selection.sort(sys.argv[3:])))
+                        print "initial collection:\t"+ str(st)
+                        print "result collection:\t"+str(selection.sort(sys.argv[3:]))
                 else:
                     show_help()
             else:
                     show_help()
-        elif sys.argv[1]=='-sh':
-            print('Search')
-            from search import binary
-            binary.awake()
-        elif sys.argv[1]=='-joke':
+        elif sys.argv[1] == '-sh':
+            if len(sys.argv) >= 3:
+                if sys.argv[2] == '-bst':
+                    print "bst"
+                    print sys.argv[3]
+                    if sys.argv[3] == "-o":
+                        print "o"
+                        
+                        if len(sys.argv) is 5:
+                            print "random"
+                            #RANDOM
+                            from auxiliary import randomizer
+                            collection = list(randomizer.create_collection(10, 0, 25))
+                            
+                            from search import binary_tree
+                            bst = binary_tree.BinaryTree()
+                            for i in range(0, 10, 1):
+                                bst.add(collection[i])
+                            print "initial collection:\t"+ str(collection)
+                            string = bst.search(int(sys.argv[4]))
+                            print "searchable object:\t" + str(sys.argv[4])
+                            print string
+                        else:
+                            #MANUAL
+                            print "manual"
+            else:
+                    show_help()
+            
+        elif sys.argv[1] == '-joke':
             import os
             try:
                 os.system('cls')
             except:
                 os.system('clear')
-            print("The classic mistake inventors absolutely reliable systems - this underestimation of the ingenuity of clinical idiots.\n\nDouglas Adams.")
+            print "The classic mistake inventors absolutely reliable systems - this underestimation of the ingenuity of clinical idiots.\n\nDouglas Adams."
         else:
             show_help()
         
