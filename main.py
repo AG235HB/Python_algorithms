@@ -22,6 +22,7 @@ def show_help():
     print "Types of search:"
     print "\t\t-bst\tBinary search tree."
     print "\t\t-bin\tBinary search. NOTE: The address only the first found number will be shown."
+    print "\t\t-lin\Linear search tree."
 
 def mode_selector():
     if len(sys.argv) >= 2:
@@ -184,6 +185,35 @@ def mode_selector():
                             print "initial collection:\t"+ str(st)
                             print "searchable object:\t" + str(sys.argv[len(sys.argv)-1])
                             print "searchable object position:" + str(binary.search(int(sys.argv[len(sys.argv)-1]), st))
+                    else:
+                        show_help()
+                elif sys.argv[2] == '-lin':
+                    if sys.argv[len(sys.argv)-2] == "-o":
+                        if len(sys.argv) is 5:
+                            #RANDOM
+                            from auxiliary import randomizer
+                            collection = list(randomizer.create_collection(10, 0, 10))
+                            from search import linear
+                            print "initial collection:\t"+ str(collection)
+                            print "searchable object:\t" + str(sys.argv[4])
+                            #collection.append(int(sys.argv[4]))
+                            print "searchable object position:" + str(linear.search(int(sys.argv[4]), collection))
+                        elif len(sys.argv) == 6 and len(sys.argv[3]) > 3:
+                            #MANUAL
+                            from auxiliary import text_formater
+                            st = str(sys.argv[3])
+                            collection = [int(item) for item in st.split(text_formater.find_separator(st))]
+                            from search import linear
+                            print "initial collection:\t"+ str(collection)
+                            print "searchable object:\t" + str(sys.argv[len(sys.argv)-1])
+                            print "searchable object position:" + str(linear.search(int(sys.argv[len(sys.argv)-1]), collection))
+                        else:
+                            #MANUAL
+                            st = [int(item) for item in sys.argv[3:len(sys.argv)-2]]
+                            from search import linear
+                            print "initial collection:\t"+ str(st)
+                            print "searchable object:\t" + str(sys.argv[len(sys.argv)-1])
+                            print "searchable object position:" + str(linear.search(int(sys.argv[len(sys.argv)-1]), st))
                     else:
                         show_help()
             else:
