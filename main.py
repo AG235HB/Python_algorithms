@@ -1,18 +1,27 @@
 def show_help():
     print "Usage:"
-    print "\tmain.py [-h] [-st <type of sort> <sequence>] [-sh]"
+    print "\tmain.py [-h] [[-st <type of sort> <sequence>]|[-sh <sequence> -o <searchable object>]]"
     print "Parameters:"
     print "\t-h\t\tShow help."
     print "\t-st\t\tSorting of sequence of numbers. It is necessary"
     print "\t\t\tto specify sorting type."
-    print "\t\t\tSequence numbers(figures) can be partitioned by\n\t\t\tspaces or ',';"
+    print "\t\t\tSequence numbers can be partitioned by\n\t\t\tspaces or ',';"
     print "\t\t\tif the sequence is not specified, 10 random numbers"
     print "\t\t\twill be generated."
+    print "\t-sh\t\tNumber search in sequence of numbers. It is necessary"
+    print "\t\t\tto specify search type."
+    print "\t\t\tSequence numbers can be partitioned by\n\t\t\tspaces or ',';"
+    print "\t\t\tif the sequence is not specified, 10 random numbers"
+    print "\t\t\twill be generated."
+    print "Types of sort:"
     print "\t\t-b\tBubble sort."
     print "\t\t-i\tInsertion sort."
     print "\t\t-m\tMerge sort."
     print "\t\t-q\tQuick sort."
     print "\t\t-s\tSelection sort."
+    print "Types of search:"
+    print "\t\t-bst\tBinary search tree."
+    print "\t\t-bin\tBinary search. NOTE: The address only the first found number will be shown."
 
 def mode_selector():
     if len(sys.argv) >= 2:
@@ -108,45 +117,87 @@ def mode_selector():
                 else:
                     show_help()
             else:
-                    show_help()
+                show_help()
         elif sys.argv[1] == '-sh':
             if len(sys.argv) >= 3:
                 if sys.argv[2] == '-bst':
-                    print "bst"
-                    print sys.argv[3]
-                    if sys.argv[3] == "-o":
-                        print "o"
-                        
+                    if sys.argv[len(sys.argv)-2] == "-o":
                         if len(sys.argv) is 5:
-                            print "random"
                             #RANDOM
                             from auxiliary import randomizer
-                            collection = list(randomizer.create_collection(10, 0, 25))
-                            
+                            collection = list(randomizer.create_collection(10, 0, 10))
                             from search import binary_tree
                             bst = binary_tree.BinaryTree()
                             for i in range(0, 10, 1):
                                 bst.add(collection[i])
                             print "initial collection:\t"+ str(collection)
-                            string = bst.search(int(sys.argv[4]))
                             print "searchable object:\t" + str(sys.argv[4])
-                            print string
+                            print bst.search(int(sys.argv[4]))
+                        elif len(sys.argv) == 6 and len(sys.argv[3]) > 3:
+                            #MANUAL
+                            from auxiliary import text_formater
+                            st = str(sys.argv[3])
+                            collection = [int(item) for item in st.split(text_formater.find_separator(st))]
+                            from search import binary_tree
+                            bst = binary_tree.BinaryTree()
+                            for i in range(0, len(collection), 1):
+                                bst.add(collection[i])
+                            print "initial collection:\t"+ str(collection)
+                            print "searchable object:\t" + str(sys.argv[len(sys.argv)-1])
+                            print bst.search(int(sys.argv[len(sys.argv)-1]))
                         else:
                             #MANUAL
-                            print "manual"
+                            st = [int(item) for item in sys.argv[3:len(sys.argv)-2]]
+                            from search import binary_tree
+                            bst = binary_tree.BinaryTree()
+                            for i in range(0, len(st), 1):
+                                bst.add(st[i])
+                            print "initial collection:\t"+ str(st)
+                            print "searchable object:\t" + str(sys.argv[len(sys.argv)-1])
+                            print bst.search(int(sys.argv[len(sys.argv)-1]))
+                    else:
+                        show_help()
+                elif sys.argv[2] == '-bin':
+                    if sys.argv[len(sys.argv)-2] == "-o":
+                        if len(sys.argv) is 5:
+                            #RANDOM
+                            from auxiliary import randomizer
+                            collection = list(randomizer.create_collection(10, 0, 10))
+                            from search import binary
+                            print "initial collection:\t"+ str(collection)
+                            print "searchable object:\t" + str(sys.argv[4])
+                            #collection.append(int(sys.argv[4]))
+                            print "searchable object position:" + str(binary.search(int(sys.argv[4]), collection))
+                        elif len(sys.argv) == 6 and len(sys.argv[3]) > 3:
+                            #MANUAL
+                            from auxiliary import text_formater
+                            st = str(sys.argv[3])
+                            collection = [int(item) for item in st.split(text_formater.find_separator(st))]
+                            from search import binary
+                            print "initial collection:\t"+ str(collection)
+                            print "searchable object:\t" + str(sys.argv[len(sys.argv)-1])
+                            print "searchable object position:" + str(binary.search(int(sys.argv[len(sys.argv)-1]), collection))
+                        else:
+                            #MANUAL
+                            st = [int(item) for item in sys.argv[3:len(sys.argv)-2]]
+                            from search import binary
+                            print "initial collection:\t"+ str(st)
+                            print "searchable object:\t" + str(sys.argv[len(sys.argv)-1])
+                            print "searchable object position:" + str(binary.search(int(sys.argv[len(sys.argv)-1]), st))
+                    else:
+                        show_help()
             else:
-                    show_help()
-            
+                show_help()
         elif sys.argv[1] == '-joke':
             import os
             try:
                 os.system('cls')
             except:
                 os.system('clear')
-            print "The classic mistake inventors absolutely reliable systems - this underestimation of the ingenuity of clinical idiots.\n\nDouglas Adams."
+            print "The classic mistake inventors absolutely reliable systems -"
+            print "this underestimation of the ingenuity of clinical idiots.\n\nDouglas Adams."
         else:
             show_help()
-        
     else:
         show_help()
 
@@ -166,3 +217,4 @@ if __name__ == '__main__':
         input_func = input
 
     mode_selector()
+    

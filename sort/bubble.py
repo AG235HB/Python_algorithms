@@ -1,6 +1,3 @@
-def awake():
-    print("Bubble sort")
-
 def sort(*args):
     arr = [int(item) for item in args[0]]
     for i in range(0, len(arr), 1):

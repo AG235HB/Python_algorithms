@@ -26,18 +26,19 @@ class BinaryTree:
         elif value >= parent.data:
             if parent.right is not None:
                 if parent.data == value:
-                    result += " " + str(parent.data)
+                    result += str(parent.data) + " "
+                    result = self.find_node(parent.right, value, result)
                 else:
                     result = self.find_node(parent.right, value, result)
             else:
                 if parent.data == value:
-                    result += " " + str(parent.data)
-        if len(result) == 7:
+                    result += str(parent.data) + " "
+        if len(result) == 10:
             result += "not found"
         return result
 
     def search(self, value):
-        res = self.find_node(self.bt, value, "RESULT:")
+        res = self.find_node(self.bt, value, "RESULT:\t\t\t")
         return res
 
     def add(self, value):
